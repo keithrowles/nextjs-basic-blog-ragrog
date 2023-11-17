@@ -2,19 +2,20 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import Link from 'next/link';
 import Head from 'next/head';
-import Post from '../components/Post';
-import { sortByDate } from '../utils';
+import Post from '../../components/Post';
+import { sortByDate } from '../../utils';
 
-export default function Home({ posts }) {
+export default function Blog({ posts }) {
   return (
     <div>
       <Head>
-        <title>Home Page</title>
+        <title>Blog Page</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Front end web developer." />
         <link rel="canonical" href="https://www.ragrog.com.au" />
-        <meta property="og:title" content="Home Page" />
+        <meta property="og:title" content="Blog Page" />
         <meta property="og:description" content="Front end web developer." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ragrog.com.au" />
@@ -27,23 +28,32 @@ export default function Home({ posts }) {
         <meta name="robots" content="index,follow" />
       </Head>
 
+      {/* Breadcrumb */}
+      <div className="text-sm breadcrumbs mx-6 mt-4">
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
+          <li>Blog</li>
+        </ul>
+      </div>
+
       {/* Blog Section */}
       <div className="h-80 mt-9">
         <div className="hero bg-base-200 rounded-box p-3">
           <div className="hero-content text-center">
-            <div className="max-w-6xl">
-              <h1 className="text-5xl font-bold">Welcome to my Blog</h1>
-              <p className="py-6 text-2xl">
+            <div className="max-w-md">
+              <h1 className="text-5xl font-bold">Blog</h1>
+              <p className="py-6">
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
                 repudiandae et a id nisi.
               </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
-                repellat ab tempora, deserunt totam perspiciatis hic unde
-                doloribus, saepe nisi a impedit velit eum quidem? Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Ducimus, quam.
-              </p>
+              <Link href="/contact">
+                <a className="btn btn-primary">Contact</a>
+              </Link>
             </div>
           </div>
         </div>
